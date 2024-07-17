@@ -212,9 +212,9 @@ class Tableau:
         improved further.
 
         # Standard linear program:
-        Max:  x1 +  x2
-        ST:   x1 + 3x2 <= 4
-             3x1 +  x2 <= 4
+        Max:   x1 +  x2
+        ST:    x1 + 3x2 <= 4
+        ...    3x1 +  x2 <= 4
         >>> Tableau(np.array([[-1,-1,0,0,0],[1,3,1,0,4],[3,1,0,1,4.]]),
         ... 2, 0).run_simplex()
         {'P': 2.0, 'x1': 1.0, 'x2': 1.0}
@@ -222,8 +222,8 @@ class Tableau:
         # Standard linear program with 3 variables:
         Max: 3x1 +  x2 + 3x3
         ST:  2x1 +  x2 +  x3 ≤ 2
-              x1 + 2x2 + 3x3 ≤ 5
-             2x1 + 2x2 +  x3 ≤ 6
+            x1 + 2x2 + 3x3 ≤ 5
+            2x1 + 2x2 +  x3 ≤ 6
         >>> Tableau(np.array([
         ... [-3,-1,-3,0,0,0,0],
         ... [2,1,1,1,0,0,2],
@@ -244,8 +244,8 @@ class Tableau:
         # Non-standard: >= constraints
         Max: 2x1 + 3x2 +  x3
         ST:   x1 +  x2 +  x3 <= 40
-             2x1 +  x2 -  x3 >= 10
-                 -  x2 +  x3 >= 10
+            2x1 +  x2 -  x3 >= 10
+                -  x2 +  x3 >= 10
         >>> Tableau(np.array([
         ... [2, 0, 0, 0, -1, -1, 0, 0, 20],
         ... [-2, -3, -1, 0, 0, 0, 0, 0, 0],
@@ -271,10 +271,10 @@ class Tableau:
         # Pivot on slack variables
         Max: 8x1 + 6x2
         ST:   x1 + 3x2 <= 33
-             4x1 + 2x2 <= 48
-             2x1 + 4x2 <= 48
-              x1 +  x2 >= 10
-             x1        >= 2
+            4x1 + 2x2 <= 48
+            2x1 + 4x2 <= 48
+            x1 +  x2 >= 10
+            x1        >= 2
         >>> Tableau(np.array([
         ... [2, 1, 0, 0, 0, -1, -1, 0, 0, 12.0],
         ... [-8, -6, 0, 0, 0, 0, 0, 0, 0, 0.0],
